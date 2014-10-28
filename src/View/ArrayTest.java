@@ -6,15 +6,13 @@ public class ArrayTest {
 		// TODO Auto-generated method stub
 
 		ArrayTest at = new ArrayTest();
-		at.translate(0, 0, 0, 2, 2, 0, at.a);
-		at.display(at.a);
+		at.a = ArrayUtils.narry;
+		at.translate(0, 0, 0, 0, 2, 0, at.a);
+		ArrayUtils.displayArray(at.a);
 	}
 
-	private int [][][] a = new int [][][] {{
-		                                                   {2,2,4},
-		                                                   {4,4,8},
-		                                                   {16,32,64}
-		                                                   }};
+	private int [][][] a = new int [3][3][2];
+	
 	
 	//显示数组中所有数字
 	private void display(int a [][][]){
@@ -104,12 +102,12 @@ public class ArrayTest {
 			else if (array[x1][y2][0] == array[x2][y2+1][0]){
 				array[x1][y2][0] = 2;
 				array[x2][y2+1][0] =0;
-				translate(x2 ,y2+2 ,0 , x1 ,y2 ,0 , array);
+				translate(x2 ,y2+2 ,0 , x1 ,y1 ,0 , array);
 			}
 			else if (array[x1][y2][0] != array[x2][y2+1][0]){
 				array[x1][y2][0] = 1;
 				array[x2][y2+1][0] =1;
-				translate(x2 ,y2+1 ,0 , x1 ,y2 ,0 , array);
+				translate(x2 ,y2+1 ,0 , x1 ,y1 ,0 , array);
 			}
 		}
 		
@@ -130,12 +128,12 @@ public class ArrayTest {
 			else if (array[x1][y1][0] == array[x2][y1+1][0]){
 				array[x1][y1][1] = 2;
 				array[x1][y1+1][1] =0;
-				translate(x2 , y1+2 ,0 , x2, y1, 0, array);
+				translate(x1 , y1+2 ,0 , x1, y2, 0, array);
 			}
 			else if (array[x1][y1][0] != array[x2][y1+1][0]){
 				array[x1][y1][1] = 1;
 				array[x1][y1+1][1] =1;
-				translate(x2 , y1+1 ,0 , x2, y1, 0, array);
+				translate(x1 , y1+1 ,0 , x1, y2, 0, array);
 			}
 		}
 		}
