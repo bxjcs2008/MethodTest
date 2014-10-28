@@ -37,9 +37,12 @@ public class ArrayUtils {
 	}
 	
 	//构建一维数组
-	public static int [] line1  = new int [] {2,2,4};
-	public static int [] line2  = new int [] {2,2,4};
-	public static int [] line3  = new int [] {2,2,4};
+	public static int [] line1  = new int [] {2,4,8};
+	public static int [] line2  = new int [] {2,8,4};
+	public static int [] line3  = new int [] {8,2,4};
+	public static int [] line01  = new int [] {0,0,0};
+	public static int [] line02  = new int [] {0,0,0};
+	public static int [] line03  = new int [] {0,0,0};
 	
 	//构建二维数组
 	public static int [][] array  = new int [][] {
@@ -47,10 +50,15 @@ public class ArrayUtils {
 		line2,
 		line3
 	};
+	public static int [][] array0 = new int [][] {
+		line01,
+		line02,
+		line03
+	};
 	
 	//构建三维数组
 	public static int [][][]narry = new int[][][]{
 		array,
-		
+		array0
 	};
 }

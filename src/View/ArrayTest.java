@@ -7,7 +7,8 @@ public class ArrayTest {
 
 		ArrayTest at = new ArrayTest();
 		at.a = ArrayUtils.narry;
-		at.translate(0, 0, 0, 0, 2, 0, at.a);
+		at.translate(0, 0, 0, 0, 0, 2, at.a);
+		//System.out.println(at.a[0][0][0] + " " + at.a[0][1][0]);
 		ArrayUtils.displayArray(at.a);
 	}
 
@@ -18,7 +19,7 @@ public class ArrayTest {
 	private void display(int a [][][]){
 		for (int i = 0;i<3;i++){
 			for (int j = 0;j <3;j++){
-				System.out.print(a[i][j][0]);
+				System.out.print(a[0][i][j]);
 				System.out.print("  ");
 			}
 			System.out.println();
@@ -29,111 +30,113 @@ public class ArrayTest {
 	private void translate(int x1,int y1,int z1,int x2,int y2,int z2,int [][][] array){
 		
 		//两点重合的情况
-		if (x2 == x1 && y2 == y1){
+		if (y2 == y1 && z2 == z1){
+			array[1][x1][y1] = 1;
+			array[1][x2][y2] = 1;
 			return;
 		}
 		
 		//up
-		if(y1 == y2&& x1 > x2){
-			if (x2 - x1 == 1) {
-					if (array[x1][y1][0] == array[x2][y2][0]) {
-						array[x2][y2][1] = 2;
-						array[x1][y1][1] = 0;
+		if(z1 == z2&& y1 > y2){
+			if (y2 - y1 == 1) {
+					if (array[0][y1][z1] == array[0][y2][z2]) {
+						array[1][y2][z2] = 2;
+						array[1][y1][z1] = 0;
 						return;
 					} else {
-						array[x2][y2][1] = 1;
-						array[x1][y1][1] = 1;
+						array[1][y2][z2] = 1;
+						array[1][y1][z1] = 1;
 						return;
 					}
 			}
-			else if(x2!=x1&&array[x2][y1][0] ==array[x2+1][y2][0]){
-				array[x2][y2][1] = 2;
-				array[x2+1][y2][1] = 0;
-				translate(x2+2 ,y2 ,0, x1, y1,0 ,array);
+			else if(x2!=x1&&array[0][y2][z1] ==array[0][y2+1][z2]){
+				array[1][y2][z2] = 2;
+				array[1][y2+1][z2] = 0;
+				translate(0,y2+2 ,z2 ,0 , y1, z1,array);
 			}
-			else if(x2!=x1&&array[x2][y1][0] !=array[x2+1][y2][0]){
-				array[x2][y2][1] = 1;
-				array[x2+1][y2][1] = 1;
-				translate(x2+1 ,y2 ,0, x1, y1,0 ,array);
+			else if(x2!=x1&&array[0][y2][z1] !=array[0][y2+1][z2]){
+				array[1][y2][z2] = 1;
+				array[1][y2+1][z2] = 1;
+				translate(0 ,y2+1 ,z2 ,0, y1, z1,array);
 			}
 		}
 		
 		//down
-		if(y1 == y2&& x2 > x1){
-			if (x1 -x2 ==1){
-				if (array[x1][y1][0] == array[x2][y2][0]){
-					array[x1][y1][1] = 0;
-					array[x2][y2][1] = 2;
+		if(z1 == z2&& y2 > y1){
+			if (y1 -y2 ==1){
+				if (array[0][y1][z1] == array[0][y2][z2]){
+					array[1][y1][z1] = 0;
+					array[1][y2][z2] = 2;
 					return;
 				}
 				else {
-					array[x1][y1][1] = 1;
-					array[x2][y2][1] = 1;
+					array[1][y1][z1] = 1;
+					array[1][y2][z2] = 1;
 					return;
 				}
 			}
-			else if (array[x2][y1][0] == array[x2+1][y2][0]){
-				array[x2+1][y2][1] = 2;
-				array[x2][y2][1] = 0;
-				translate(x2+2 ,y2 ,0 ,x1 ,y1 ,0 ,array);
+			else if (array[0][y2][z1] == array[0][y2+1][z2]){
+				array[1][y2+1][z2] = 2;
+				array[1][y2][z2] = 0;
+				translate(0 ,y2+2 ,z2 ,0 ,y1 ,z1 ,array);
 			}
-			else if (array[x2][y1][0] != array[x2+1][y2][0]){
-				array[x2+1][y2][1] = 1;
-				array[x2][y2][1] = 1;
-				translate(x2+1 ,y2 ,0 ,x1 ,y1 ,0 ,array);
+			else if (array[0][y2][z1] != array[0][y2+1][z2]){
+				array[1][y2+1][z2] = 1;
+				array[1][y2][z2] = 1;
+				translate(0 ,y2+1 ,z2 ,0 ,y1 ,z1 ,array);
 			}
 			
 		}
 		
 		//left
-		if(x1 == x2&& y2 < y1){
-			if (y1 - y2 ==1){
-				if (array[x1][y1][0] == array[x2][y2][0]){
-					array[x2][y2][1] = 2;
-					array[x2][y1][1] = 0;
+		if(y1 == y2&& z2 < y1){
+			if (z1 - z2 ==1){
+				if (array[0][y1][z1] == array[0][y2][z2]){
+					array[1][y2][z2] = 2;
+					array[1][y2][z1] = 0;
 					return;
 				}
 				else {
-					array[x2][y2][1] = 1;
-					array[x2][y1][1] = 1;
+					array[1][y2][z2] = 1;
+					array[1][y2][z1] = 1;
 					return;
 				}
 			}
-			else if (array[x1][y2][0] == array[x2][y2+1][0]){
-				array[x1][y2][0] = 2;
-				array[x2][y2+1][0] =0;
-				translate(x2 ,y2+2 ,0 , x1 ,y1 ,0 , array);
+			else if (array[0][y1][z2] == array[0][y2][z2+1]){
+				array[0][y1][z2] = 2;
+				array[0][y2][z2+1] =0;
+				translate(0 ,y2 ,z2+2 ,0 , y1 ,z1 , array);
 			}
-			else if (array[x1][y2][0] != array[x2][y2+1][0]){
-				array[x1][y2][0] = 1;
-				array[x2][y2+1][0] =1;
-				translate(x2 ,y2+1 ,0 , x1 ,y1 ,0 , array);
+			else if (array[0][y1][z2] != array[0][y2][z2+1]){
+				array[0][y1][z2] = 1;
+				array[0][y2][z2+1] =1;
+				translate(0 ,y2 ,z2+1 ,0 , y1 ,z1 , array);
 			}
 		}
 		
 		//right
-		if(x1 == x2&& y2 > y1){
-			if (y2 - y1 ==1){
-				if (array[x1][y1][0] == array[x2][y2][0]){
-					array[x1][y1][1] = 2;
-					array[x2][y2][1] =0;
+		if(y1 == y2&& z2 > z1){
+			if (z2 - z1 ==1){
+				if (array[0][y1][z1] == array[0][y2][z2]){
+					array[1][y1][z1] = 2;
+					array[1][y2][z2] =0;
 					return;
 				}
 				else {
-					array[x1][y1][1] = 1;
-					array[x2][y2][1] =1;
+					array[1][y1][z1] = 1;
+					array[1][y2][z2] = 1;
 					return;
 				}
 			}
-			else if (array[x1][y1][0] == array[x2][y1+1][0]){
-				array[x1][y1][1] = 2;
-				array[x1][y1+1][1] =0;
-				translate(x1 , y1+2 ,0 , x1, y2, 0, array);
+			else if (array[0][y1][z1] == array[0][y2][z1+1]){
+				array[1][y1][z1] = 2;
+				array[1][y1][z1+1] =0;
+				translate(0 , y1 ,z1+2 , 0, y1, z2, array);
 			}
-			else if (array[x1][y1][0] != array[x2][y1+1][0]){
-				array[x1][y1][1] = 1;
-				array[x1][y1+1][1] =1;
-				translate(x1 , y1+1 ,0 , x1, y2, 0, array);
+			else if (array[0][y1][z1] != array[0][y2][z1+1]){
+				array[1][y1][z1] = 1;
+				array[1][y1][z1+1] =1;
+				translate(0 , y1 ,z1+1 , 0, y1, z2, array);
 			}
 		}
 		}
@@ -151,7 +154,7 @@ public class ArrayTest {
 		//数值移动
 		if (type == "LEFT"){
 			for(int i = 0;i < 3;i++){
-				for(int j = 0; j<3;j++){
+				for(int j = 0; j < 3;j++){
 					while (a[i][j][0] == 0){
 						a[i][j][0] = a[i][j+1][0];
 						a[i+1][j][0] = 0;
