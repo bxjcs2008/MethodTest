@@ -31,7 +31,7 @@ public class ArrayTest {
 	}
 	
 	//数组translate   起点(x1,y1,z1)    终点(x2,y2,z2)
-	private void translate(int x1,int y1,int z1,int x2,int y2,int z2,int [][][] array){
+	private static void translate(int x1,int y1,int z1,int x2,int y2,int z2,int [][][] array){
 		
 		//两点重合的情况
 		if (y2 == y1 && z2 == z1){
@@ -155,7 +155,7 @@ public class ArrayTest {
 		}
 	
 	//数组重新赋值
-	public  int [][][]  reAssign (int [][][] array){
+	public  static int [][][]  reAssign (int [][][] array){
 		
 		//数值变化
 		for (int i = 0 ; i < array[0].length ; i++){
@@ -165,15 +165,15 @@ public class ArrayTest {
 		}
 		
 
-		return a;
+		return array;
 	}
 	
-	public void sysprint( String string){
+	public static void sysprint( String string){
 		
 		System.out.println( string + " ");
 	}
 	
-	public void translate(int [][][] array,String string){
+	public static void translate(int [][][] array,String string){
 		
 		if (string == "LEFT"){
 			for (int i = 0 ; i < array[0].length ; i++){
