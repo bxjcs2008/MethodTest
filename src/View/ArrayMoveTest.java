@@ -33,7 +33,7 @@ public class ArrayMoveTest {
 					
 					m = i;
 					n = j;
-					while(array[i][j]==0&&m<ARRAY_SIZE&&n<ARRAY_SIZE){
+					while(array[i][j]==0&&m<array.length&&n<array[0].length){
 						array[i][j] = array[m][n];
 						array[m][n] = 0;
 						n = n+1;
@@ -48,8 +48,8 @@ public class ArrayMoveTest {
 	//输出数组各个数值
 	public void display (int [][] array){
 		
-		for (int i = 0;i <ARRAY_SIZE;i++){
-			for (int j = 0; j<ARRAY_SIZE ; j++){
+		for (int i = 0;i <array.length;i++){
+			for (int j = 0; j<array[i].length ; j++){
 				System.out.print(array[i][j]+"   ");
 			}
 			System.out.println("");
@@ -69,7 +69,7 @@ public class ArrayMoveTest {
 		
 		for (int i = 0; i < array.length ;i++ ){
 			for (int counter = 1; array[i] == 0&& counter <=array.length;counter++ ){
-				for (int m = i ; m < array.length; m++){
+				for (int m = i ; m < array.length -1; m++){
 					array[m] = array[m+1];
 					array[m+1] = 0;
 				}
@@ -103,7 +103,7 @@ public class ArrayMoveTest {
 		}
 		
 						if (type =="RIGHT"){
-							for (int i = 0 ; i < array.length ; i++){
+							for (int i = 0 ; i < ARRAY_SIZE -1 ; i++){
 								for (int j = ARRAY_SIZE - 1 ; j >= 0  ;j--){
 									test2[ARRAY_SIZE - 1 -j ] = array[i][j];
 								}

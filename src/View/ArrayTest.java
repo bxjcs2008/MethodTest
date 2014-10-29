@@ -12,7 +12,7 @@ public class ArrayTest {
 				0, 0, 0, 
 				at.a);*/
 		ArrayUtils.displayArray(at.a[0]);
-		at.translate(at.a, "RIGHT");
+		at.translate(at.a, "UP");
 		ArrayUtils.displayArray(at.a[0]);
 	}
 
@@ -182,7 +182,7 @@ public class ArrayTest {
 						array);
 			}
 			reAssign(array);
-			ArrayMoveTest.moveArray(array[0],string);
+			ArrayMoveTestNew.moveArray(array[0],string);
 		}
 		
 		if (string == "RIGHT"){
@@ -192,7 +192,7 @@ public class ArrayTest {
 						array);
 			}
 			reAssign(array);
-			ArrayMoveTest.moveArray(array[0],string);
+			ArrayMoveTestNew.moveArray(array[0],string);
 		}
 		
 		if (string == "UP"){
@@ -202,7 +202,7 @@ public class ArrayTest {
 						array);
 			}
 			reAssign(array);
-			ArrayMoveTest.moveArray(array[0],string);
+			ArrayMoveTestNew.moveArray(array[0],string);
 		}
 		
 		if (string == "DOWN"){
@@ -212,7 +212,7 @@ public class ArrayTest {
 						array);
 			}
 			reAssign(array);
-			ArrayMoveTest.moveArray(array[0],string);
+			ArrayMoveTestNew.moveArray(array[0],string);
 		}
 	}
 }
