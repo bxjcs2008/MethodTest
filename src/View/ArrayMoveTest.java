@@ -9,7 +9,7 @@ public class ArrayMoveTest {
 		ArrayMoveTest amt = new ArrayMoveTest();
 		//amt.movArrayLeft(line, "");
 		//amt.displayline(amt.movArrayLeft(line, ""));
-		amt.display(amt.moveArrayTest(amt.array, "RIGHT"));
+		amt.display(amt.moveArray(amt.array, "RIGHT"));
 	}
 	
 	public  int [][] array = {
@@ -19,7 +19,7 @@ public class ArrayMoveTest {
 		{2  ,0  ,32  ,16 }
 	};
 	public static int [] line = {0,0,1,2}; 
-	public static int ARRAY_SIZE = 4;
+	public static int ARRAY_SIZE = 3;
 	
 
 	//将4*4数组中的非”0 “元素向左移动
@@ -27,8 +27,8 @@ public class ArrayMoveTest {
 		
 		int m;
 		int n;
-		for (int i = 0;i < ARRAY_SIZE ;i++){
-			for (int j = 0; j < ARRAY_SIZE ; j++){
+		for (int i = 0;i < array.length ;i++){
+			for (int j = 0; j < array[i].length ; j++){
 				if (array[i][j]==0){
 					
 					m = i;
@@ -57,19 +57,19 @@ public class ArrayMoveTest {
 	}
 	
 	//输出一维数组各个数值
-	public void displayline(int [] line){
+/*	public void displayline(int [] line){
 		for (int i = 0 ;i< ARRAY_SIZE ;i++){
 			System.out.print(line[i] + " ");
 		}
 		System.out.println("");
-	}
+	}*/
 	
 	//将一维数组中的 非‘0’ 元素向左移动
-	public int [] movArrayLeft(int [] array , String type){
+	public static int [] movArrayLeft(int [] array , String type){
 		
-		for (int i = 0; i < ARRAY_SIZE -1 ;i++ ){
-			for (int counter = 1; array[i] == 0&& counter <=ARRAY_SIZE;counter++ ){
-				for (int m = i ; m < ARRAY_SIZE - 1; m++){
+		for (int i = 0; i < array.length ;i++ ){
+			for (int counter = 1; array[i] == 0&& counter <=array.length;counter++ ){
+				for (int m = i ; m < array.length; m++){
 					array[m] = array[m+1];
 					array[m+1] = 0;
 				}
@@ -80,7 +80,7 @@ public class ArrayMoveTest {
 	
 
 	//将4*4数组中的非“0”元素上下左右移动
-	public int [][] moveArrayTest(int [][] array, String type){
+	public static int [][] moveArray(int [][] array, String type){
 		
 		int [] test1 = new int [ARRAY_SIZE];
 		int [] test2 = new int [ARRAY_SIZE];
@@ -88,22 +88,22 @@ public class ArrayMoveTest {
 		int [] test4 = new int [ARRAY_SIZE];
 		
 		if (type == "LEFT"){
-			for (int i = 0 ; i < ARRAY_SIZE; i++){
-				for (int j = 0 ; j < ARRAY_SIZE ; j++){
+			for (int i = 0 ; i < array.length; i++){
+				for (int j = 0 ; j < array[i].length ; j++){
 					test1[j] = array[i][j];
 				}
 				test1  = movArrayLeft(test1,"LEFT");
 				
 				
 				//注意不能写成 array[i] = test1; ( 引用传递，没有实现值传递)
-				for (int j =0 ; j <ARRAY_SIZE ; j++){
+				for (int j =0 ; j <array[i].length ; j++){
 					array[i][j] = test1[j];
 				}
 			}
 		}
 		
 						if (type =="RIGHT"){
-							for (int i = 0 ; i < ARRAY_SIZE ; i++){
+							for (int i = 0 ; i < array.length ; i++){
 								for (int j = ARRAY_SIZE - 1 ; j >= 0  ;j--){
 									test2[ARRAY_SIZE - 1 -j ] = array[i][j];
 								}

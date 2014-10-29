@@ -7,12 +7,16 @@ public class ArrayTest {
 
 		ArrayTest at = new ArrayTest();
 		at.a = ArrayUtils.narry;
-		at.translate(0, 0, 0, 0, 0, 2, at.a);
-		//System.out.println(at.a[0][0][0] + " " + at.a[0][1][0]);
-		ArrayUtils.displayArray(at.a);
+		
+		/*at.translate(0, 0, 3,
+				0, 0, 0, 
+				at.a);*/
+		ArrayUtils.displayArray(at.a[0]);
+		at.translate(at.a, "RIGHT");
+		ArrayUtils.displayArray(at.a[0]);
 	}
 
-	private int [][][] a = new int [3][3][2];
+	private int [][][] a = new int [2][3][3];
 	
 	
 	//显示数组中所有数字
@@ -31,137 +35,184 @@ public class ArrayTest {
 		
 		//两点重合的情况
 		if (y2 == y1 && z2 == z1){
-			array[1][x1][y1] = 1;
-			array[1][x2][y2] = 1;
+			array[1][y1][z1] = 1;
+			array[1][y2][z2] = 1;
+			sysprint("EQ");
 			return;
 		}
 		
 		//up
 		if(z1 == z2&& y1 > y2){
-			if (y2 - y1 == 1) {
+			if (y1 - y2 == 1) {
 					if (array[0][y1][z1] == array[0][y2][z2]) {
 						array[1][y2][z2] = 2;
 						array[1][y1][z1] = 0;
+						sysprint("UP");
 						return;
 					} else {
 						array[1][y2][z2] = 1;
 						array[1][y1][z1] = 1;
+						sysprint("UP");
 						return;
 					}
 			}
-			else if(x2!=x1&&array[0][y2][z1] ==array[0][y2+1][z2]){
+			else if(y2!=y1&&array[0][y2][z1] ==array[0][y2 + 1][z2]){
 				array[1][y2][z2] = 2;
 				array[1][y2+1][z2] = 0;
-				translate(0,y2+2 ,z2 ,0 , y1, z1,array);
+				translate(0,y1 ,z1 ,0 , y2 + 2, z2,array);
 			}
-			else if(x2!=x1&&array[0][y2][z1] !=array[0][y2+1][z2]){
+			else if(y2!=y1&&array[0][y2][z1] !=array[0][y2 + 1][z2]){
 				array[1][y2][z2] = 1;
-				array[1][y2+1][z2] = 1;
-				translate(0 ,y2+1 ,z2 ,0, y1, z1,array);
+				array[1][y2 + 1][z2] = 1;
+				translate(0 ,y1 ,z1 ,0, y2 + 1, z2,array);
 			}
 		}
 		
 		//down
 		if(z1 == z2&& y2 > y1){
-			if (y1 -y2 ==1){
+			if (y2 - y1 ==1){
 				if (array[0][y1][z1] == array[0][y2][z2]){
 					array[1][y1][z1] = 0;
 					array[1][y2][z2] = 2;
+					sysprint("DOWN");
 					return;
 				}
 				else {
 					array[1][y1][z1] = 1;
 					array[1][y2][z2] = 1;
+					sysprint("DOWN");
 					return;
 				}
 			}
-			else if (array[0][y2][z1] == array[0][y2+1][z2]){
-				array[1][y2+1][z2] = 2;
-				array[1][y2][z2] = 0;
-				translate(0 ,y2+2 ,z2 ,0 ,y1 ,z1 ,array);
+			else if (array[0][y2][z1] == array[0][y2-1][z2]){
+				array[1][y2][z2] = 2;
+				array[1][y2-1][z2] = 0;
+				translate(0 ,y1 ,z2 ,0 ,y2-2 ,z1 ,array);
 			}
-			else if (array[0][y2][z1] != array[0][y2+1][z2]){
-				array[1][y2+1][z2] = 1;
+			else if (array[0][y2][z1] != array[0][y2-1][z2]){
+				array[1][y2-1][z2] = 1;
 				array[1][y2][z2] = 1;
-				translate(0 ,y2+1 ,z2 ,0 ,y1 ,z1 ,array);
+				translate(0 ,y1 ,z2 ,0 ,y2-1 ,z1 ,array);
 			}
 			
-		}
-		
-		//left
-		if(y1 == y2&& z2 < y1){
-			if (z1 - z2 ==1){
-				if (array[0][y1][z1] == array[0][y2][z2]){
-					array[1][y2][z2] = 2;
-					array[1][y2][z1] = 0;
-					return;
-				}
-				else {
-					array[1][y2][z2] = 1;
-					array[1][y2][z1] = 1;
-					return;
-				}
-			}
-			else if (array[0][y1][z2] == array[0][y2][z2+1]){
-				array[0][y1][z2] = 2;
-				array[0][y2][z2+1] =0;
-				translate(0 ,y2 ,z2+2 ,0 , y1 ,z1 , array);
-			}
-			else if (array[0][y1][z2] != array[0][y2][z2+1]){
-				array[0][y1][z2] = 1;
-				array[0][y2][z2+1] =1;
-				translate(0 ,y2 ,z2+1 ,0 , y1 ,z1 , array);
-			}
 		}
 		
 		//right
 		if(y1 == y2&& z2 > z1){
 			if (z2 - z1 ==1){
 				if (array[0][y1][z1] == array[0][y2][z2]){
-					array[1][y1][z1] = 2;
-					array[1][y2][z2] =0;
+					array[1][y2][z2] = 2;
+					array[1][y2][z1] = 0;
+					sysprint("RIGHT");
+					return;
+				}
+				else {
+					array[1][y2][z2] = 1;
+					array[1][y2][z1] = 1;
+					sysprint("RIGHT");
+					return;
+				}
+			}
+			else if (array[0][y1][z2] == array[0][y2][z2 - 1]){
+				array[1][y1][z2] = 2;
+				array[1][y2][z2 - 1] =0;
+				translate(0 ,y1 ,z1 ,0 , y2 ,z2-2 , array);
+			}
+			else if (array[0][y1][z2] != array[0][y2][z2 - 1]){
+				array[1][y1][z2] = 1;
+				array[1][y2][z2-1] =1;
+				translate(0 ,y1 ,z1,0 , y1 ,z2 -1 , array);
+			}
+		}
+		
+		//left
+		if(y1 == y2&& z2 < z1){
+			if (z1 - z2 ==1){
+				if (array[0][y1][z1] == array[0][y2][z2]){
+					array[1][y1][z2] = 2;
+					array[1][y2][z1] =0;
+					sysprint("LEFT");
 					return;
 				}
 				else {
 					array[1][y1][z1] = 1;
 					array[1][y2][z2] = 1;
+					sysprint("LEFT");
 					return;
 				}
 			}
-			else if (array[0][y1][z1] == array[0][y2][z1+1]){
-				array[1][y1][z1] = 2;
-				array[1][y1][z1+1] =0;
-				translate(0 , y1 ,z1+2 , 0, y1, z2, array);
+			else if (array[0][y1][z2] == array[0][y2][z2+1]){
+				array[1][y1][z2] = 2;
+				array[1][y1][z2+1] =0;
+				translate(0 , y1 ,z1 , 0, y1, z2+2, array);
 			}
-			else if (array[0][y1][z1] != array[0][y2][z1+1]){
-				array[1][y1][z1] = 1;
-				array[1][y1][z1+1] =1;
-				translate(0 , y1 ,z1+1 , 0, y1, z2, array);
+			else if (array[0][y1][z2] != array[0][y2][z2+1]){
+				array[1][y1][z2] = 1;
+				array[1][y1][z2+1] =1;
+				translate(0 , y1 ,z1 , 0, y1, z2+1, array);
 			}
 		}
 		}
 	
-	//数组重构
-	public  int [][][]  relocate (int [][][] a, String type){
+	//数组重新赋值
+	public  int [][][]  reAssign (int [][][] array){
 		
 		//数值变化
-		for (int i = 0 ; i<3; i++){
-			for (int j = 0; j<3;j++){
-				a[i][j][0] = a[i][j][0]*a[i][j][1];
+		for (int i = 0 ; i < array[0].length ; i++){
+			for (int j = 0; j<array[0][0].length ;j++){
+				array[0] [i][j]= array[0][i][j]*array[1][i][j];
 			}
 		}
 		
-		//数值移动
-		if (type == "LEFT"){
-			for(int i = 0;i < 3;i++){
-				for(int j = 0; j < 3;j++){
-					while (a[i][j][0] == 0){
-						a[i][j][0] = a[i][j+1][0];
-						a[i+1][j][0] = 0;
-					}
-				}
-			}
-		}
+
 		return a;
+	}
+	
+	public void sysprint( String string){
+		
+		System.out.println( string + " ");
+	}
+	
+	public void translate(int [][][] array,String string){
+		
+		if (string == "LEFT"){
+			for (int i = 0 ; i < array[0].length ; i++){
+				translate(0,i,array[0][i].length - 1,
+						0,i,0,
+						array);
+			}
+			reAssign(array);
+			ArrayMoveTest.moveArray(array[0],string);
+		}
+		
+		if (string == "RIGHT"){
+			for (int i = 0; i< array[0].length ; i++){
+				translate(0,i,0,
+						0,i,array[0][i].length - 1,
+						array);
+			}
+			reAssign(array);
+			ArrayMoveTest.moveArray(array[0],string);
+		}
+		
+		if (string == "UP"){
+			for (int i = 0 ; i< array[0][0].length ; i++){
+				translate(0,array[0].length -1,i,
+						0,0,i,
+						array);
+			}
+			reAssign(array);
+			ArrayMoveTest.moveArray(array[0],string);
+		}
+		
+		if (string == "DOWN"){
+			for (int i = 0 ; i< array[0][0].length ; i++){
+				translate(0,0,i,
+						0,array[0].length -1,i,
+						array);
+			}
+			reAssign(array);
+			ArrayMoveTest.moveArray(array[0],string);
+		}
 	}
 }
