@@ -5,15 +5,26 @@ public class ArrayTest {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		ArrayTest at = new ArrayTest();
+/*		ArrayTest at = new ArrayTest();
 		at.a = ArrayUtils.narry;
 		
-		/*at.translate(0, 0, 3,
+		at.translate(0, 0, 3,
 				0, 0, 0, 
-				at.a);*/
+				at.a);
 		ArrayUtils.displayArray(at.a[0]);
 		at.translate(at.a, "UP");
-		ArrayUtils.displayArray(at.a[0]);
+		ArrayUtils.displayArray(at.a[0]);*/
+		
+		//²âÊÔ¼üÅÌÊÂ¼ş
+		GridFrame gl=new GridFrame("´°¿Ú");
+		gl.arrayShow(ArrayUtils.array);
+		while(ArrayControl.type != null ){
+			
+			ArrayTest.translate(ArrayUtils.narry, ArrayControl.type);
+			gl.arrayShow(ArrayUtils.array);
+			ArrayControl.type = null;
+		}
+		
 	}
 
 	private int [][][] a = new int [2][3][3];
@@ -183,6 +194,7 @@ public class ArrayTest {
 			}
 			reAssign(array);
 			ArrayMoveTestNew.moveArray(array[0],string);
+			ArrayUtils.createNewNum(array[0]);
 		}
 		
 		if (string == "RIGHT"){
@@ -193,6 +205,7 @@ public class ArrayTest {
 			}
 			reAssign(array);
 			ArrayMoveTestNew.moveArray(array[0],string);
+			ArrayUtils.createNewNum(array[0]);
 		}
 		
 		if (string == "UP"){
@@ -203,6 +216,7 @@ public class ArrayTest {
 			}
 			reAssign(array);
 			ArrayMoveTestNew.moveArray(array[0],string);
+			ArrayUtils.createNewNum(array[0]);
 		}
 		
 		if (string == "DOWN"){
@@ -213,6 +227,7 @@ public class ArrayTest {
 			}
 			reAssign(array);
 			ArrayMoveTestNew.moveArray(array[0],string);
+			ArrayUtils.createNewNum(array[0]);
 		}
 	}
 }

@@ -57,7 +57,7 @@ public class GridFrame extends JFrame{
 	}
 	
 	//构造方法
-	public GridFrame(String s){
+	public  GridFrame(String s){
 		
 		super(s);
 		setLayout(new BorderLayout());     //定义窗体布局为边界布局
@@ -65,7 +65,10 @@ public class GridFrame extends JFrame{
 	
 	public static void main(String[] args){
 
-        GridFrame gl=new GridFrame("2048！");
-        gl.arrayShow(ArrayUtils.array);
+        GridFrame gl=new GridFrame("窗口");
+
+        while(1 ==1 ){
+        	gl.arrayShow(ArrayUtils.array);
+        }
         }
 }

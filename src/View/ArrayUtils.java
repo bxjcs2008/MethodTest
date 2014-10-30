@@ -61,4 +61,17 @@ public class ArrayUtils {
 		array,
 		array0
 	};
+	
+	//数组中生产1个数
+	public static void createNewNum(int [][] array){
+		
+		for (int i = 0 ; i< array.length ; i++){
+			for (int j = 0 ; j < array[i].length ; j++){
+				if (array[i][j] == 0){
+					array[i][j] = 2;
+					return;
+				}
+			}
+		}
+	}
 }
