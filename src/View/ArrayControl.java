@@ -24,4 +24,5 @@ public class ArrayControl {
 			type = null;
 		}
 	}
+
 }
