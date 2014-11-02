@@ -40,20 +40,24 @@ public class ArrayUtils {
 	public static int [] line1  = new int [] {2,4,8,8};
 	public static int [] line2  = new int [] {2,8,4,16};
 	public static int [] line3  = new int [] {8,8,4,32};
+	public static int [] line4  = new int [] {8,8,4,32};
 	public static int [] line01  = new int [] {0,0,0,0};
 	public static int [] line02  = new int [] {0,0,0,0};
 	public static int [] line03  = new int [] {0,0,0,0};
+	public static int [] line04  = new int [] {0,0,0,0};
 	
 	//构建二维数组
 	public static int [][] array  = new int [][] {
 		line1,
 		line2,
-		line3
+		line3,
+		line4
 	};
 	public static int [][] array0 = new int [][] {
 		line01,
 		line02,
-		line03
+		line03,
+		line04
 	};
 	
 	//构建三维数组

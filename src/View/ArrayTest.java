@@ -1,45 +1,9 @@
 package View;
 
+/**
+ * 数组的合并和移动   主要方法 translate()
+ * */
 public class ArrayTest {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-/*		ArrayTest at = new ArrayTest();
-		at.a = ArrayUtils.narry;
-		
-		at.translate(0, 0, 3,
-				0, 0, 0, 
-				at.a);
-		ArrayUtils.displayArray(at.a[0]);
-		at.translate(at.a, "UP");
-		ArrayUtils.displayArray(at.a[0]);*/
-		
-		//测试键盘事件
-		GridFrame gl=new GridFrame("窗口");
-		gl.arrayShow(ArrayUtils.array);
-		while(ArrayControl.type != null ){
-			
-			ArrayTest.translate(ArrayUtils.narry, ArrayControl.type);
-			gl.arrayShow(ArrayUtils.array);
-			ArrayControl.type = null;
-		}
-		
-	}
-
-	private int [][][] a = new int [2][3][3];
-	
-	
-	//显示数组中所有数字
-	private void display(int a [][][]){
-		for (int i = 0;i<3;i++){
-			for (int j = 0;j <3;j++){
-				System.out.print(a[0][i][j]);
-				System.out.print("  ");
-			}
-			System.out.println();
-		}
-	}
 	
 	//数组translate   起点(x1,y1,z1)    终点(x2,y2,z2)
 	private static void translate(int x1,int y1,int z1,int x2,int y2,int z2,int [][][] array){

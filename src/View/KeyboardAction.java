@@ -4,8 +4,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyboardAction implements KeyListener{
-
-	public  static int [][][] array = ArrayUtils.narry;
 	
 	public static GridFrame gf;
 	
@@ -44,12 +42,6 @@ public class KeyboardAction implements KeyListener{
 	public void keyReleased(KeyEvent e) {
 	}
 	public void keyTyped(KeyEvent e) {
-	}
-	public int[][][] getArray() {
-		return array;
-	}
-	public void setArray(int[][][] array) {
-		this.array = array;
 	}
 	public static GridFrame getGf() {
 		return gf;

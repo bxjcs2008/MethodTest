@@ -7,7 +7,6 @@ public class ArrayControl {
 
 		GridFrame gl=new GridFrame("´°¿Ú");
 		KeyboardAction.setGf(gl);
-		gl.arrayShow(ArrayUtils.array);
 		System.out.print("OVER");
 	}
 
@@ -20,7 +19,7 @@ public class ArrayControl {
 		while(type != null ){
 			
 			ArrayTest.translate(array, type);
-			gl.arrayShow(array[0]);
+			gl.loadArray(array[0]);
 			type = null;
 		}
 	}
